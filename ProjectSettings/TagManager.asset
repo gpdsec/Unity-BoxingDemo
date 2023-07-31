@@ -9,6 +9,9 @@ TagManager:
   - Players
   - Spawnpoint
   - Manager
+  - LifeReduce
+  - EnemyLifeReduce
+  - FPcamera
   layers:
   - Default
   - TransparentFX
