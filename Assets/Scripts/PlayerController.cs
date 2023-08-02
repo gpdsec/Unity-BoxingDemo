@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public Animator animator;
-    public GameObject enemy;
+    // public GameObject enemy;
     public Image playerStamina;
     public bool hit = false;
     public bool block = false;
     public bool movePlayer = false;
     public float playerStaminaValue;
     public float playerStaminaIncrease;
-    public EnemyController enemyController;
+    // public EnemyController enemyController;
     float limitPos = 2.5f;
     float speed = 0.5f;
     float wait = 1.7f;
@@ -31,15 +31,15 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        Move();
+        // Move();
         Hook();
-        Block();
-        Limit();
-        StaminaIncrease();
+        // Block();
+        // Limit();
+        // StaminaIncrease();
     }
     public void Forward()
     {
-        if (Input.GetKey(KeyCode.UpArrow) && gameOver == false && enemyController.distanceEnemy > posLimit)
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             animator.SetBool("Forward", true);
             Moving(posZero, posZero, pos);
@@ -112,22 +112,22 @@ public class PlayerController : MonoBehaviour
     }
     public void HookRight()
     {
-        if (Input.GetKeyDown(KeyCode.D) && hit == false && gameOver == false)
+        if (Input.GetKeyDown(KeyCode.D))
         {
             animator.SetTrigger("HookRight");
             HitBool(true);
-            StartCoroutine(Hit());
-            PlayerStamina();
+            //StartCoroutine(Hit());
+            //PlayerStamina();
         }
     }
     public void HookLeft()
     {
-        if (Input.GetKeyDown(KeyCode.A) && hit == false && gameOver == false)
+        if (Input.GetKeyDown(KeyCode.A))
         {
             animator.SetTrigger("HookLeft");
             HitBool(true);
-            StartCoroutine(Hit());
-            PlayerStamina();
+            //StartCoroutine(Hit());
+            //PlayerStamina();
         }
     }
     IEnumerator Hit()
@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Look()
     {
-        transform.LookAt(enemy.transform.position, Vector3.up);
+        // transform.LookAt(enemy.transform.position, Vector3.up);
     }
     public void StaminaIncrease()
     {
