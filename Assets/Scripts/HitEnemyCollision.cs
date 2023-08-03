@@ -17,11 +17,11 @@ public class HitEnemyCollision : MonoBehaviour
     float playersLifeReduce;
     void Start()
     {
-        playerLife.fillAmount = 1;
+        //playerLife.fillAmount = 1;
     }
     void Update()
     {
-        GameOver();
+        //GameOver();
     }
     private void OnCollisionEnter(Collision collision)
     {

@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public Animator animator;
-    // public GameObject enemy;
+    public GameObject enemy;
     public Image playerStamina;
     public bool hit = false;
     public bool block = false;
     public bool movePlayer = false;
     public float playerStaminaValue;
     public float playerStaminaIncrease;
-    // public EnemyController enemyController;
+    public EnemyController enemyController;
     float limitPos = 2.5f;
     float speed = 0.5f;
     float wait = 1.7f;
@@ -24,6 +25,9 @@ public class PlayerController : MonoBehaviour
     public bool state = false;
     public AudioSources audios;
     float rotY = 23;
+    public Vector3 moveDirection;
+    public Transform target;
+    float x, y, z;
     void Start()
     {
         playerStamina.fillAmount = pos;
@@ -32,10 +36,32 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Move();
-        Hook();
+        // Hook();
         // Block();
         // Limit();
         // StaminaIncrease();
+        //x = 0.203f;
+        //y = 1.25f;
+        //z = 0.423f;
+        //x = 0.032f;
+        //y = 1.194f;
+        //z = 0.418f;
+        x = 0.2441f;
+        y = 1.2576f;
+        z = 0.4681f;
+        if (Input.GetKey(KeyCode.D))
+        {
+            moveDirection = new Vector3(x, y, z);
+            //target.Translate(Vector3.forward + moveDirection, Space.Self);
+            target.position = moveDirection;
+        }
+        else if(Input.GetKey(KeyCode.A))
+        {
+            target.position = new Vector3(0.1434626f, 1.213162f, 0.189629f);
+        }
+
+
+
     }
     public void Forward()
     {
