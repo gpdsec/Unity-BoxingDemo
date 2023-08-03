@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public Camera Cam;
     public Animator animator;
     public GameObject enemy;
     public Image playerStamina;
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 moveDirection;
     public Transform target;
     float x, y, z;
+    public Vector3 screenPosition;
+    public Vector3 worldPosition;
     void Start()
     {
         playerStamina.fillAmount = pos;
@@ -49,16 +52,29 @@ public class PlayerController : MonoBehaviour
         x = 0.2441f;
         y = 1.2576f;
         z = 0.4681f;
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveDirection = new Vector3(x, y, z);
-            //target.Translate(Vector3.forward + moveDirection, Space.Self);
-            target.position = moveDirection;
-        }
-        else if(Input.GetKey(KeyCode.A))
-        {
-            target.position = new Vector3(0.1434626f, 1.213162f, 0.189629f);
-        }
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    moveDirection = new Vector3(x, y, z);
+        //    //target.Translate(Vector3.forward + moveDirection, Space.Self);
+        //    target.position = moveDirection;
+        //}
+        //else if(Input.GetKey(KeyCode.A))
+        //{
+        //    target.position = new Vector3(0.1434626f, 1.213162f, 0.189629f);
+        ////}
+        //float mouseX = Input.GetAxis("Mouse X");
+        //float mouseY = Input.GetAxis("Mouse Y");
+        //Vector3 pos = new Vector3(mouseX, mouseY, 0.300f);
+        //Ray ray = Cam.ScreenPointToRay(pos);
+        //target.position = ray.GetPoint;
+        screenPosition = Input.mousePosition;
+        screenPosition.z = Cam.nearClipPlane + .5f;
+        worldPosition = Cam.ScreenToWorldPoint(screenPosition);
+
+        target.position = worldPosition;
+
+
+
 
 
 
